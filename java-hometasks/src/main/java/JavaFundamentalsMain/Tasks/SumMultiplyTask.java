@@ -1,13 +1,13 @@
 package JavaFundamentalsMain.Tasks;
 
-import JavaFundamentalsMain.JavaFundamentalsMain;
+import JavaFundamentalsMain.AppLauncher;
 
 public class SumMultiplyTask {
     public static void main(String[] args) {}
     public static void run () {
         int sum = 0;
         int multiply = 1;
-        String[] arguments = JavaFundamentalsMain.getArguments();
+        String[] arguments = AppLauncher.getArguments();
         for (String i : arguments)
         {
             sum += Integer.parseInt(i);

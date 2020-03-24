@@ -4,8 +4,13 @@ import JavaFundamentalsMain.Tasks.*;
 
 public class AppLauncher {
     public static void main(String[] args) {}
+    private static String[] cmdArguments;
+    public static String[] getArguments() {
 
-    public static void chooseYourTask() {
+        return cmdArguments;
+    }
+    public static void chooseYourTask(String[] args) {
+        cmdArguments = args;
         System.out.print("\nPlease, choose which task should be executed:" +
                 "\n 1 - The greetings one" +
                 "\n 2 - Reverse arguments" +
