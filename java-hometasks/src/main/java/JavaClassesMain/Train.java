@@ -2,93 +2,95 @@ package JavaClassesMain;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
 import static java.time.LocalTime.MIDNIGHT;
 
 public class Train {
-    int number;
-    String destination;
-    LocalTime departureTime;
-    //    Плацкарт - Economy class sleeper. Купе - Compartment sleeper. Общие - Sitting coaches. Люкс - Business class
-    int sittingCoaches;
-    int economyClassSleeper;
-    int compartmentSleeper;
-    int businessClass;
+  int number;
+  String destination;
+  LocalTime departureTime;
 
-    Train () {
-        destination = "Default";
-        departureTime = MIDNIGHT;
-    }
-    Train (String destination) {
-        this.destination = destination;
-        departureTime = MIDNIGHT;
-    }
+  //    Плацкарт - Economy class sleeper. Купе - Compartment sleeper.
+  //    Общие - Sitting coaches. Люкс - Business class
+  int sittingCoaches;
+  int economyClassSleeper;
+  int compartmentSleeper;
+  int businessClass;
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
+  Train() {
+    destination = "Default";
+    departureTime = MIDNIGHT;
+  }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
+  Train(String destination) {
+    this.destination = destination;
+    departureTime = MIDNIGHT;
+  }
 
-    public void setDepartureTime(LocalTime departureTime) {
-        this.departureTime = departureTime;
-    }
+  public void setNumber(int number) {
+    this.number = number;
+  }
 
-    public void setEconomyClassSleeper(int economyClassSleeper) {
-        this.economyClassSleeper = economyClassSleeper;
-    }
+  public void setDestination(String destination) {
+    this.destination = destination;
+  }
 
-    public void setCompartmentSleeper(int compartmentSleeper) {
-        this.compartmentSleeper = compartmentSleeper;
-    }
+  public void setDepartureTime(LocalTime departureTime) {
+    this.departureTime = departureTime;
+  }
 
-    public void setSittingCoaches(int sittingCoaches) {
-        this.sittingCoaches = sittingCoaches;
-    }
+  public void setEconomyClassSleeper(int economyClassSleeper) {
+    this.economyClassSleeper = economyClassSleeper;
+  }
 
-    public void setBusinessClass(int businessClass) {
-        this.businessClass = businessClass;
-    }
+  public void setCompartmentSleeper(int compartmentSleeper) {
+    this.compartmentSleeper = compartmentSleeper;
+  }
 
-    public int getNumber() {
-        return number;
-    }
+  public void setSittingCoaches(int sittingCoaches) {
+    this.sittingCoaches = sittingCoaches;
+  }
 
-    public String getDestination() {
-        return destination;
-    }
+  public void setBusinessClass(int businessClass) {
+    this.businessClass = businessClass;
+  }
 
-    public LocalTime getDepartureTime() {
-        return departureTime;
-    }
+  public int getNumber() {
+    return number;
+  }
 
-    public int getEconomyClassSleeper() {
-        return economyClassSleeper;
-    }
+  public String getDestination() {
+    return destination;
+  }
 
-    public int getCompartmentSleeper() {
-        return compartmentSleeper;
-    }
+  public LocalTime getDepartureTime() {
+    return departureTime;
+  }
 
-    public int getSittingCoaches() {
-        return sittingCoaches;
-    }
+  public int getEconomyClassSleeper() {
+    return economyClassSleeper;
+  }
 
-    public int getBusinessClass() {
-        return businessClass;
-    }
+  public int getCompartmentSleeper() {
+    return compartmentSleeper;
+  }
 
-    @Override
-    public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return "Train №" + number +
-                ": Destination - " + destination +
-                ", Departure - " + departureTime.format(formatter) +
-                ", Tickets: Sitting Coaches " + sittingCoaches +
-                ", Economy Class Sleeper - " + economyClassSleeper +
-                ", Compartment Sleeper - " + compartmentSleeper +
-                ", Business Class - " + businessClass;
-    }
+  public int getSittingCoaches() {
+    return sittingCoaches;
+  }
+
+  public int getBusinessClass() {
+    return businessClass;
+  }
+
+  @Override
+  public String toString() {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+    return "Train №" + number
+        + ": Destination - " + destination
+        + ", Departure - " + departureTime.format(formatter)
+        + ", Tickets: Sitting Coaches " + sittingCoaches
+        + ", Economy Class Sleeper - " + economyClassSleeper
+        + ", Compartment Sleeper - " + compartmentSleeper
+        + ", Business Class - " + businessClass;
+  }
 }
