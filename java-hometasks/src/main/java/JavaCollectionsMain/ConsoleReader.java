@@ -10,7 +10,7 @@ public class ConsoleReader {
         keepAsking = false;
       } catch (NumberFormatException typo) {
         keepAsking = true;
-        System.out.print("\nIt doesn't look like a number. Please, enter an actual number: ");
+        System.out.print("\nIt either too big or not an actual number. Please, enter another one: ");
       }
     } while (keepAsking);
     return number;
