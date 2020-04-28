@@ -1,8 +1,6 @@
-import JavaClassesMain.Input;
-import JavaClassesMain.Train;
-import JavaClassesMain.TrainSchedule;
+package JavaClassesMain;
 
-public class JavaClassesMain {
+public class JavaClassesMainRunner {
   public static void main(String[] args) {
     do {
       int length = Input.toNumber("Please, choose the number of trains in the array: ");

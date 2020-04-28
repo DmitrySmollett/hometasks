@@ -1,6 +1,6 @@
-import JavaFundamentalsOptional.AppLauncher;
+package JavaFundamentalsOptional;
 
-public class JavaFundamentalsOptional {
+public class JavaFundamentalsOptionalRunner {
 
   public static void main(String[] args) {
     do {

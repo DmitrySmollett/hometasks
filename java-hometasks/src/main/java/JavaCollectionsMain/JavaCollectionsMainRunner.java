@@ -1,4 +1,5 @@
-import JavaCollectionsMain.TrainStation;
+package JavaCollectionsMain;
+
 import JavaCollectionsMain.Trains.PassengerTrain;
 import JavaCollectionsMain.Wagons.PassengerCarriage;
 import java.util.List;
@@ -20,5 +21,6 @@ public class JavaCollectionsMainRunner {
     } else {
       System.out.println("No matches found");
     }
+    System.out.println();
   }
 }

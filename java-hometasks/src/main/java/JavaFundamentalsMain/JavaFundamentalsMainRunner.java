@@ -1,6 +1,6 @@
-import JavaFundamentalsMain.AppLauncher;
+package JavaFundamentalsMain;
 
-public class JavaFundamentalsMain {
+public class JavaFundamentalsMainRunner {
   public static void main(String[] args) {
     do {
       AppLauncher.chooseYourTask(args);
