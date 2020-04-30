@@ -35,7 +35,7 @@ public class AirportTest {
           new ExperimentalPlane(RYAN_X_13_VERTIJET));
 
   @Test
-  public void GetMilitaryTransportPlanesHasAtLeastOneTransport() {
+  public void getMilitaryTransportPlanesHasAtLeastOneTransport() {
     Airport airport = new Airport(planes);
     List<MilitaryPlane> transportMilitaryPlanes = airport.getMilitaryTransportPlanes();
     Assert.assertTrue(
@@ -45,7 +45,7 @@ public class AirportTest {
   private static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane(BOEING_747);
 
   @Test
-  public void GetPassengerPlaneWithMaxPassengersCapacityReturnsBoeing747() {
+  public void getPassengerPlaneWithMaxPassengersCapacityReturnsBoeing747() {
     Airport airport = new Airport(planes);
     PassengerPlane expectedPlaneWithMaxPassengersCapacity =
         airport.getPassengerPlaneWithMaxPassengersCapacity();
@@ -53,7 +53,7 @@ public class AirportTest {
   }
 
   @Test
-  public void SortByMaxLoadCapacityHasAscendingSortingOrder() {
+  public void sortByMaxLoadCapacityHasAscendingSortingOrder() {
     Airport airport = new Airport(planes);
     List<? extends Plane> planesSortedByMaxLoadCapacity =
         airport.sortByMaxLoadCapacity().getPlanes();
@@ -64,7 +64,7 @@ public class AirportTest {
   }
 
   @Test
-  public void GetMilitaryBomberPlanesHasAtLeastOneBomber() {
+  public void getMilitaryBomberPlanesHasAtLeastOneBomber() {
     Airport airport = new Airport(planes);
     List<MilitaryPlane> bomberMilitaryPlanes = airport.getMilitaryBomberPlanes();
     Assert.assertTrue(
@@ -72,7 +72,7 @@ public class AirportTest {
   }
 
   @Test
-  public void AtLeastOneOfExperimentalPlanesHasClassificationLevelHigherThanUnclassified() {
+  public void atLeastOneOfExperimentalPlanesHasClassificationLevelHigherThanUnclassified() {
     Airport airport = new Airport(planes);
     List<ExperimentalPlane> experimentalPlanes = airport.getExperimentalPlanes();
     Assert.assertTrue(
