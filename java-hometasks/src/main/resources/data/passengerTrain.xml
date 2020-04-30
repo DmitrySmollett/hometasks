@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_241" class="java.beans.XMLDecoder">
- <object class="JavaCollectionsMain.Trains.PassengerTrain">
+ <object class="collectionsmain.train.PassengerTrain">
   <void property="locomotiveModel">
    <string>EG 511</string>
   </void>
@@ -10,7 +10,7 @@
   <void property="wagons">
    <object class="java.util.ArrayList">
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>100</int>
       </void>
@@ -19,14 +19,14 @@
       </void>
       <void property="travelClass">
        <object class="java.lang.Enum" id="TravelClass0" method="valueOf">
-        <class>JavaCollectionsMain.Types.TravelClass</class>
+        <class>collectionsmain.train.TravelClass</class>
         <string>ECONOMY_CLASS</string>
        </object>
       </void>
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>34</int>
       </void>
@@ -35,14 +35,14 @@
       </void>
       <void property="travelClass">
        <object class="java.lang.Enum" id="TravelClass1" method="valueOf">
-        <class>JavaCollectionsMain.Types.TravelClass</class>
+        <class>collectionsmain.train.TravelClass</class>
         <string>FIRST_CLASS</string>
        </object>
       </void>
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>63</int>
       </void>
@@ -55,7 +55,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>52</int>
       </void>
@@ -68,7 +68,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>41</int>
       </void>
@@ -81,7 +81,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>52</int>
       </void>
@@ -94,7 +94,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>16</int>
       </void>
@@ -107,7 +107,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>83</int>
       </void>
@@ -120,7 +120,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>23</int>
       </void>
@@ -133,7 +133,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>83</int>
       </void>
@@ -146,7 +146,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>11</int>
       </void>
@@ -159,7 +159,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>4</int>
       </void>
@@ -172,7 +172,7 @@
      </object>
     </void>
     <void method="add">
-     <object class="JavaCollectionsMain.Wagons.PassengerCarriage">
+     <object class="collectionsmain.train.wagons.PassengerCarriage">
       <void property="luggage">
        <int>23</int>
       </void>
