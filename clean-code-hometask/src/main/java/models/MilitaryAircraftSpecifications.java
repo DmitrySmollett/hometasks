@@ -15,11 +15,7 @@ public enum MilitaryAircraftSpecifications {
   public MilitaryType type;
 
   MilitaryAircraftSpecifications(
-      String model,
-      int maxSpeed,
-      int maxFlightDistance,
-      int maxLoadCapacity,
-      MilitaryType type) {
+      String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType type) {
     this.model = model;
     this.maxSpeed = maxSpeed;
     this.maxFlightDistance = maxFlightDistance;

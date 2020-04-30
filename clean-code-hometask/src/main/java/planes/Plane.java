@@ -5,9 +5,9 @@ import models.ExperimentalAircraftSpecifications;
 import models.MilitaryAircraftSpecifications;
 import models.PassengerAircraftSpecifications;
 
-abstract public class Plane {
+public abstract class Plane {
 
-  String model;
+  private String model;
   private int maxSpeed;
   private int maxFlightDistance;
   private int maxLoadCapacity;
@@ -51,8 +51,7 @@ abstract public class Plane {
 
   @Override
   public String toString() {
-    return "Plane{"
-        + " model='" + model + '\''
+    return "Plane{ model='" + model + '\''
         + ", maxSpeed=" + maxSpeed
         + ", maxFlightDistance=" + maxFlightDistance
         + ", maxLoadCapacity=" + maxLoadCapacity + '}';

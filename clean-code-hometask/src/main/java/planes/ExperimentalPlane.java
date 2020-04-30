@@ -4,7 +4,7 @@ import models.ClassificationLevel;
 import models.ExperimentalAircraftSpecifications;
 import models.ExperimentalTypes;
 
-public class ExperimentalPlane extends Plane{
+public class ExperimentalPlane extends Plane {
 
   private ExperimentalTypes type;
   private ClassificationLevel classificationLevel;

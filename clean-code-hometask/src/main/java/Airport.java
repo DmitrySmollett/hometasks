@@ -23,8 +23,8 @@ public class Airport {
 
   public List<PassengerPlane> getPassengerPlanes() {
     List<PassengerPlane> passengerPlanes = new ArrayList<>();
-    for (Plane plane: planes) {
-      if (plane instanceof PassengerPlane){
+    for (Plane plane : planes) {
+      if (plane instanceof PassengerPlane) {
         passengerPlanes.add((PassengerPlane) plane);
       }
     }
@@ -54,7 +54,7 @@ public class Airport {
   public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
     List<PassengerPlane> passengerPlanes = getPassengerPlanes();
     return Collections.max(
-        passengerPlanes,(Comparator.comparingInt(PassengerPlane::getPassengersCapacity)));
+        passengerPlanes, (Comparator.comparingInt(PassengerPlane::getPassengersCapacity)));
   }
 
   public List<MilitaryPlane> getMilitaryBomberPlanes() {
@@ -73,6 +73,7 @@ public class Airport {
     planes.sort(Comparator.comparingInt(Plane::getMaxFlightDistance));
     return this;
   }
+
   public Airport sortByMaxSpeed() {
     planes.sort(Comparator.comparingInt(Plane::getMaxSpeed));
     return this;

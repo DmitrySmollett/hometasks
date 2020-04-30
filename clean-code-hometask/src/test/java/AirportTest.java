@@ -17,23 +17,22 @@ import java.util.List;
 public class AirportTest {
 
   private static List<Plane> planes = Arrays.asList(
-      new PassengerPlane(BOEING_737),
-      new PassengerPlane(BOEING_737_800),
-      new PassengerPlane(BOEING_747),
-      new PassengerPlane(AIRBUS_A320),
-      new PassengerPlane(AIRBUS_A330),
-      new PassengerPlane(EMBRAER_190),
-      new PassengerPlane(SUKHOI_SUPERJET_100),
-      new PassengerPlane(BOMBARDIER_CS300),
-      new MilitaryPlane(B_1B_LANCER),
-      new MilitaryPlane(B_2_SPIRIT),
-      new MilitaryPlane(B_52_STRATOFORTRESS),
-      new MilitaryPlane(F_15),
-      new MilitaryPlane(F_22),
-      new MilitaryPlane(C_130_HERCULES),
-      new ExperimentalPlane(BELL_X_14),
-      new ExperimentalPlane(RYAN_X_13_VERTIJET)
-  );
+          new PassengerPlane(BOEING_737),
+          new PassengerPlane(BOEING_737_800),
+          new PassengerPlane(BOEING_747),
+          new PassengerPlane(AIRBUS_A320),
+          new PassengerPlane(AIRBUS_A330),
+          new PassengerPlane(EMBRAER_190),
+          new PassengerPlane(SUKHOI_SUPERJET_100),
+          new PassengerPlane(BOMBARDIER_CS300),
+          new MilitaryPlane(B_1B_LANCER),
+          new MilitaryPlane(B_2_SPIRIT),
+          new MilitaryPlane(B_52_STRATOFORTRESS),
+          new MilitaryPlane(F_15),
+          new MilitaryPlane(F_22),
+          new MilitaryPlane(C_130_HERCULES),
+          new ExperimentalPlane(BELL_X_14),
+          new ExperimentalPlane(RYAN_X_13_VERTIJET));
 
   @Test
   public void GetMilitaryTransportPlanesHasAtLeastOneTransport() {
@@ -58,8 +57,10 @@ public class AirportTest {
     Airport airport = new Airport(planes);
     List<? extends Plane> planesSortedByMaxLoadCapacity =
         airport.sortByMaxLoadCapacity().getPlanes();
-    Assert.assertEquals(planesSortedByMaxLoadCapacity, planesSortedByMaxLoadCapacity.stream()
-        .sorted(Comparator.comparingInt(Plane::getMaxLoadCapacity)).collect(Collectors.toList()));
+    Assert.assertEquals(planesSortedByMaxLoadCapacity,
+        planesSortedByMaxLoadCapacity.stream()
+            .sorted(Comparator.comparingInt(Plane::getMaxLoadCapacity))
+            .collect(Collectors.toList()));
   }
 
   @Test
@@ -71,7 +72,7 @@ public class AirportTest {
   }
 
   @Test
-  public void AtLeastOneOfExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
+  public void AtLeastOneOfExperimentalPlanesHasClassificationLevelHigherThanUnclassified() {
     Airport airport = new Airport(planes);
     List<ExperimentalPlane> experimentalPlanes = airport.getExperimentalPlanes();
     Assert.assertTrue(

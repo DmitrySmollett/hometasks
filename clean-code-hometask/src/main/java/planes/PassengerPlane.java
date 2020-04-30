@@ -3,7 +3,7 @@ package planes;
 import java.util.Objects;
 import models.PassengerAircraftSpecifications;
 
-public class PassengerPlane extends Plane{
+public class PassengerPlane extends Plane {
 
   private int passengersCapacity;
 
