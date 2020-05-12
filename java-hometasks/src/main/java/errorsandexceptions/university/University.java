@@ -42,6 +42,8 @@ public class University {
 
   @Override
   public String toString() {
-    return "University{" + "name='" + name + '\'' + ", bunchOfFaculties=" + bunchOfFaculties + '}';
+    StringBuilder faculties = new StringBuilder();
+    bunchOfFaculties.forEach(obj -> faculties.append(obj.toString()));
+    return "University - " + name + ", Faculties:" + faculties + "\n";
   }
 }

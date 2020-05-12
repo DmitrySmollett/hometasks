@@ -33,10 +33,10 @@ public class Student {
     this.bunchOfSubjects = bunchOfSubjects;
   }
 
-  public Optional<Integer> findGrade (CourseOfStudy course) {
+  public Optional<Integer> findGrade(CourseOfStudy course) {
     Optional<Subject> subject;
-    subject = this.getBunchOfSubjects().stream().filter(o -> o.getCourseOfStudy() == course)
-              .findFirst();
+    subject =
+        this.getBunchOfSubjects().stream().filter(o -> o.getCourseOfStudy() == course).findFirst();
     return subject.map(Subject::getGrade);
   }
 
@@ -61,10 +61,8 @@ public class Student {
 
   @Override
   public String toString() {
-    return "Student{" +
-        "firstName='" + firstName + '\'' +
-        ", lastName='" + lastName + '\'' +
-        ", bunchOfSubjects=" + bunchOfSubjects +
-        '}';
+    StringBuilder subjects = new StringBuilder();
+    bunchOfSubjects.forEach(obj -> subjects.append(obj.toString()));
+    return "\nStudent " + firstName + ' ' + lastName + ", Subjects: " + subjects;
   }
 }

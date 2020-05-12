@@ -42,6 +42,6 @@ public class Subject {
 
   @Override
   public String toString() {
-    return "Subject{" + "courseOfStudy=" + courseOfStudy + ", grade=" + grade + '}';
+    return " " + courseOfStudy + " = " + grade + ',';
   }
 }

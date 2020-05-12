@@ -42,6 +42,8 @@ public class Group {
 
   @Override
   public String toString() {
-    return "Group{" + "name='" + name + '\'' + ", bunchOfStudents=" + bunchOfStudents + '}';
+    StringBuilder students = new StringBuilder();
+    bunchOfStudents.forEach(obj -> students.append(obj.toString()));
+    return "\nGroup - " + name + ", Students:" + students;
   }
 }
