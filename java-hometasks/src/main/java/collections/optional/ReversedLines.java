@@ -18,8 +18,6 @@ public class ReversedLines {
       while ((line = bufferedReader.readLine()) != null) {
         fileLines.push(line);
       }
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -30,8 +28,6 @@ public class ReversedLines {
         bufferedWriter.write(fileLines.pop());
         bufferedWriter.newLine();
       }
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
