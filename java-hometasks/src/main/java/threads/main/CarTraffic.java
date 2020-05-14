@@ -15,7 +15,7 @@ public class CarTraffic {
         TimeUnit.MILLISECONDS.sleep(rand.nextInt(3000));
         new Thread(
                 () -> {
-                  Car car = CarTraffic.createRandomCar();
+                  Car car = createRandomCar();
                   System.out.println(car.toString() + " looking foa a vacant place");
                   boolean parkingPlaceIsFound = false;
                   try {
