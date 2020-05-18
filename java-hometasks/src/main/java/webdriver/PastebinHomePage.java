@@ -1,4 +1,4 @@
-package webdriver.bringiton;
+package webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,7 @@ public class PastebinHomePage {
   private String pasteText;
   private WebDriver driver;
 
-  @FindBy(xpath = "//textarea[@name='paste_code']")
+  @FindBy(name = "paste_code")
   private WebElement generalInputField;
 
   @FindBy(
@@ -32,10 +32,10 @@ public class PastebinHomePage {
   @FindBy(xpath = "//li[contains(text(), 'Bash')]")
   private WebElement syntaxStyleBoxBashOption;
 
-  @FindBy(xpath = "//input[@name='paste_name']")
+  @FindBy(name = "paste_name")
   private WebElement titleInputField;
 
-  @FindBy(xpath = "//input[@name='submit']")
+  @FindBy(name = "submit")
   private WebElement submitPasteButton;
 
   public PastebinHomePage(WebDriver driver) {
@@ -79,6 +79,12 @@ public class PastebinHomePage {
   public PastebinNewPastePage sendPaste() {
     clickElementWhenAvailable(submitPasteButton);
     return new PastebinNewPastePage(driver,pasteText, titleText);
+  }
+
+  public boolean titleOfCreatedPasteContainsEnteredTitle() {
+    clickElementWhenAvailable(submitPasteButton);
+    new WebDriverWait(driver, 10).until(ExpectedConditions.titleContains(titleText));
+    return true;
   }
 
   private void clickElementWhenAvailable(WebElement element) {
