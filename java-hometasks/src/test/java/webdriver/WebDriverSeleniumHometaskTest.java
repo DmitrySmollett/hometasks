@@ -34,12 +34,6 @@ public class WebDriverSeleniumHometaskTest {
             .pickCommittedUsage()
             .addToEstimate()
             .checkEstimateFields();
-
-    try {
-      TimeUnit.SECONDS.sleep(6);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     Assert.assertTrue(
         estimateMatchesTheChosenData, "Estimate fields data doesn't match the original one");
   }
