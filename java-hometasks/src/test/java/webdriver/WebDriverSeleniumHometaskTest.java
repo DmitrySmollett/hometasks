@@ -16,25 +16,35 @@ public class WebDriverSeleniumHometaskTest {
     driver = new ChromeDriver();
   }
 
-  @Test(description = "Hurt Me Plenty test")
-  public void hurtMePlenty() {
-    new CloudGoogleHomePage(driver)
-        .openPage()
-        .searchForGoogleCloudPlatformPricingCalculator()
-        .swichToTheGoogleCloudPlatformPricingCalculatorPage()
-        .clickComputeEngineButton()
-        .inputNumberOfInstances(4)
-        .pickFreeOperatingSystem();
+  @Test(description = "Hurt Me Plenty Test")
+  public void googleCloudCalculatorEstimateFieldsContainDataThatWasEnteredPreviously() {
+    boolean estimateMatchesTheChosenData =
+        new CloudGoogleHomePage(driver)
+            .openPage()
+            .searchForGoogleCloudPlatformPricingCalculator()
+            .swichToTheGoogleCloudPlatformPricingCalculatorPage()
+            .clickComputeEngineButton()
+            .inputNumberOfInstances(4)
+            .pickFreeOperatingSystem()
+            .pickRegularMachineClass()
+            .pickStandardEightMachineType()
+            .addGpus()
+            .pickLocalSsd()
+            .pickDatacenterLocation()
+            .pickCommittedUsage()
+            .addToEstimate()
+            .checkEstimateFields();
 
     try {
-      TimeUnit.SECONDS.sleep(3);
+      TimeUnit.SECONDS.sleep(6);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    Assert.assertTrue(true);
+    Assert.assertTrue(
+        estimateMatchesTheChosenData, "Estimate fields data doesn't match the original one");
   }
 
-  @Test(description = "pastebin can be created")
+  @Test(description = "I Can Win Test")
   public void pasteCanBeCreated() {
     boolean pageTitleMatchesTheOriginalOne =
         new PastebinHomePage(driver)
@@ -48,9 +58,7 @@ public class WebDriverSeleniumHometaskTest {
         "Title of a new bastebin page doesn't match the original one");
   }
 
-  @Test(
-      description =
-          "The title style and text of a new paste created by pastebin matches the chosen one")
+  @Test(description = "Bring It On Test")
   public void generatedPasteMatchesTheChosenOne() {
     String text =
         "git config --global user.name  \"New Sheriff in Town\"\n"
