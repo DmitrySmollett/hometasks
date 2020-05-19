@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CloudGoogleHomePage {
+public class GoogleCloudHomePage {
   private static final String CLOUD_GOOGLE_HOME_PAGE = "http://cloud.google.com/";
   private static final String SEARCH_QUERRY = "Google Cloud Platform Pricing Calculator";
   private WebDriver driver;
@@ -26,17 +26,17 @@ public class CloudGoogleHomePage {
   @FindBy(xpath = "//iframe[@id='myFrame']")
   WebElement calculatorFrame;
 
-  public CloudGoogleHomePage(WebDriver driver) {
+  public GoogleCloudHomePage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
   }
 
-  public CloudGoogleHomePage openPage() {
+  public GoogleCloudHomePage openPage() {
     driver.get(CLOUD_GOOGLE_HOME_PAGE);
     return this;
   }
 
-  public CloudGoogleHomePage searchForGoogleCloudPlatformPricingCalculator() {
+  public GoogleCloudHomePage searchForGoogleCloudPlatformPricingCalculator() {
     new WebDriverWait(driver, 10)
         .until(ExpectedConditions.elementToBeClickable(searchButton))
         .click();
@@ -47,7 +47,7 @@ public class CloudGoogleHomePage {
     return this;
   }
 
-  public GoogleCloudPricingCalculatorPage swichToTheGoogleCloudPlatformPricingCalculatorPage() {
+  public GoogleCloudPricingCalculatorPage switchToTheGoogleCloudPlatformPricingCalculatorPage() {
     new WebDriverWait(driver, 10)
         .until(
             ExpectedConditions.elementToBeClickable(
@@ -56,10 +56,13 @@ public class CloudGoogleHomePage {
                         + SEARCH_QUERRY
                         + "']")))
         .click();
-    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(devsiteFrame));
-    driver.switchTo().frame(devsiteFrame);
-    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(calculatorFrame));
-    driver.switchTo().frame(calculatorFrame);
+    switchToTheCalculatorFrame();
     return new GoogleCloudPricingCalculatorPage(driver);
   }
+  
+  private void switchToTheCalculatorFrame () {
+    new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(devsiteFrame));
+    new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(calculatorFrame));
+  }
+
 }

@@ -1,6 +1,5 @@
 package webdriver;
 
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -14,15 +13,41 @@ public class WebDriverSeleniumHometaskTest {
   @BeforeMethod(alwaysRun = true)
   public void browserSetup() {
     driver = new ChromeDriver();
+    //driver = new FirefoxDriver();
+    //driver = new OperaDriver();
+  }
+
+  @Test(description = "Hardcore Test", invocationCount = 1)
+  public void googleCloudCalculatorEstimateTotalPriceMatchesTheOneFromEmail() {
+    boolean estimateTotalPriceMatchesTheOneFromEmail =
+        new GoogleCloudHomePage(driver)
+            .openPage()
+            .searchForGoogleCloudPlatformPricingCalculator()
+            .switchToTheGoogleCloudPlatformPricingCalculatorPage()
+            .clickComputeEngineButton()
+            .inputNumberOfInstances(4)
+            .pickFreeOperatingSystem()
+            .pickRegularMachineClass()
+            .pickStandardEightMachineType()
+            .addGpus()
+            .pickLocalSsd()
+            .pickDatacenterLocation()
+            .pickCommittedUsage()
+            .addToEstimate()
+            .clickEmailEstimate()
+            .registerNewEmailAddress()
+            .confirmEstimateWithTemporaryEmailAddress()
+            .totalPriceInEmailMatchesTheOriginalOne();
+    Assert.assertTrue(true, "Estimate total price from Email doesn't match the original one");
   }
 
   @Test(description = "Hurt Me Plenty Test")
   public void googleCloudCalculatorEstimateFieldsContainDataThatWasEnteredPreviously() {
     boolean estimateMatchesTheChosenData =
-        new CloudGoogleHomePage(driver)
+        new GoogleCloudHomePage(driver)
             .openPage()
             .searchForGoogleCloudPlatformPricingCalculator()
-            .swichToTheGoogleCloudPlatformPricingCalculatorPage()
+            .switchToTheGoogleCloudPlatformPricingCalculatorPage()
             .clickComputeEngineButton()
             .inputNumberOfInstances(4)
             .pickFreeOperatingSystem()

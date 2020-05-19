@@ -3,7 +3,6 @@ package webdriver;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -99,6 +98,9 @@ public class GoogleCloudPricingCalculatorPage {
   @FindBy(xpath = "//b[@class='ng-binding' and contains(text(), 'Total Estimated Cost')]")
   private WebElement estimateTotalCost;
 
+  @FindBy(xpath = "//button[@id='email_quote']")
+  private WebElement emailEstimateButton;
+
   public GoogleCloudPricingCalculatorPage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
@@ -183,6 +185,11 @@ public class GoogleCloudPricingCalculatorPage {
         && estimateLocalSsdSpace.getText().contains("2x375 GiB")
         && estimateCommitmentTerm.getText().contains("1 Year")
         && estimateTotalCost.getText().contains("USD 1,082.77 per 1 month");
+  }
+
+  public GoogleClougPricingCalculatorEstimatePriceByEmailPage clickEmailEstimate () {
+    forceClick(emailEstimateButton);
+    return new GoogleClougPricingCalculatorEstimatePriceByEmailPage(driver);
   }
 
   // only for elements that continuously ignore clicks
