@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GoogleClougPricingCalculatorEstimatePriceByEmailPage {
+public class GoogleCloudPricingCalculatorEmailEstimatePage {
   private static final String TEMPORARY_EMAIL = "http://temp-mail.org";
   private WebDriver driver;
   private String calculatorWindow;
@@ -38,19 +38,17 @@ public class GoogleClougPricingCalculatorEstimatePriceByEmailPage {
   @FindBy(xpath = "//*[contains(text() , 'Estimated Monthly Cost:')]")
   WebElement totalCost;
 
-  public GoogleClougPricingCalculatorEstimatePriceByEmailPage(WebDriver driver) {
+  public GoogleCloudPricingCalculatorEmailEstimatePage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
   }
 
-  public GoogleClougPricingCalculatorEstimatePriceByEmailPage registerNewEmailAddress() {
+  public GoogleCloudPricingCalculatorEmailEstimatePage registerNewEmailAddress() {
     // Additional WebDriverWait because switching to a new page while content is loading quite often
     // result in a broken page.
-    new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(calculatorEmailField));
+    waitUntilElementIsClickable(calculatorEmailField);
     switchDriverToTheNewTab(TEMPORARY_EMAIL);
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.elementToBeClickable(copyEmailAddressButton))
-        .click();
+    waitUntilElementIsClickable(copyEmailAddressButton).click();
     driver.switchTo().window(calculatorWindow);
 
     if (!(driver instanceof FirefoxDriver)) {
@@ -59,21 +57,17 @@ public class GoogleClougPricingCalculatorEstimatePriceByEmailPage {
     return this;
   }
 
-  public GoogleClougPricingCalculatorEstimatePriceByEmailPage
+  public GoogleCloudPricingCalculatorEmailEstimatePage
       confirmEstimateWithTemporaryEmailAddress() {
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.visibilityOf(calculatorEmailField))
-        .sendKeys(Keys.chord(Keys.CONTROL, "v"));
-    forceClick(calculatorSendEmailButton);
+    waitUntilElementIsClickable(calculatorEmailField).sendKeys(Keys.chord(Keys.CONTROL, "v"));
+    forceClickElementWhenClickable(calculatorSendEmailButton);
     return this;
   }
 
   public boolean totalPriceInEmailMatchesTheOriginalOne() {
     driver.switchTo().window(emailWindow);
-    new WebDriverWait(driver, 30)
-        .until(ExpectedConditions.elementToBeClickable(googleMailLink))
-        .click();
-    new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(totalCost));
+    waitUntilElementIsClickable(googleMailLink).click();
+    waitUntilElementIsClickable(totalCost);
     return totalCost.getText().contains("USD 1,082.77");
   }
 
@@ -97,8 +91,12 @@ public class GoogleClougPricingCalculatorEstimatePriceByEmailPage {
         .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(calculatorFrame));
   }
 
-  private void forceClick(WebElement element) {
-    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
+  private void forceClickElementWhenClickable(WebElement element) {
+    waitUntilElementIsClickable(element);
     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+  }
+
+  private WebElement waitUntilElementIsClickable(WebElement element) {
+    return new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
   }
 }

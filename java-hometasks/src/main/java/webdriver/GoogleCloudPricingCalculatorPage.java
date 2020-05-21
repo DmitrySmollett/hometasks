@@ -1,8 +1,12 @@
 package webdriver;
 
+import java.time.Duration;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +23,7 @@ public class GoogleCloudPricingCalculatorPage {
   @FindBy(id = "input_58")
   private WebElement numberOfInstancesField;
 
-  @FindBy(id = "select_value_label_51")
+  @FindBy(id = "select_70")
   private WebElement operatingSystemField;
 
   @FindBy(id = "select_option_60")
@@ -107,78 +111,73 @@ public class GoogleCloudPricingCalculatorPage {
   }
 
   public GoogleCloudPricingCalculatorPage clickComputeEngineButton() {
-    click(computeEngineButton);
+    waitUntilElementIsClickable(computeEngineButton).click();
     return this;
   }
 
-  public GoogleCloudPricingCalculatorPage inputNumberOfInstances(int numberOfInstances) {
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.elementToBeClickable(numberOfInstancesField))
-        .sendKeys(Integer.toString(numberOfInstances));
+  public GoogleCloudPricingCalculatorPage inputNumberOfInstances(Integer numberOfInstances) {
+    waitUntilElementIsClickable(numberOfInstancesField).sendKeys(numberOfInstances.toString());
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage pickFreeOperatingSystem() {
-// For some reason non JS methods doesn't work from this point
-//
-//    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(operatingSystemField));
-//    Actions actions = new Actions(driver);
-//    actions.click(operatingSystemField).perform();
-//
-//    click(operatingSystemField);
-
-    forceClick(operatingSystemField);
-    forceClick(operatingSystemFreeSoftwareOption);
+    forceClickElementWhenClickable(operatingSystemField);
+    forceClickElementWhenClickable(operatingSystemFreeSoftwareOption);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage pickRegularMachineClass() {
-    forceClick(machineClassField);
-    forceClick(machineClassRegularOption);
+    forceClickElementWhenClickable(machineClassField);
+    forceClickElementWhenClickable(machineClassRegularOption);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage pickStandardEightMachineType() {
-    forceClick(machineTypeField);
-    forceClick(machineTypeStandardEightOption);
+    forceClickElementWhenClickable(machineTypeField);
+    forceClickElementWhenClickable(machineTypeStandardEightOption);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage addGpus() {
-    forceClick(addGpusCheckbox);
-    forceClick(numberOfGpusField);
-    forceClick(numberOfGpusSingleGpuOption);
-    forceClick(gpuTypeField);
-    forceClick(gpuTypeChooseGpuNVIDIATeslaV100Type);
+    forceClickElementWhenClickable(addGpusCheckbox);
+    forceClickElementWhenClickable(numberOfGpusField);
+    forceClickElementWhenClickable(numberOfGpusSingleGpuOption);
+    forceClickElementWhenClickable(gpuTypeField);
+    forceClickElementWhenClickable(gpuTypeChooseGpuNVIDIATeslaV100Type);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage pickLocalSsd() {
-    forceClick(localSsdField);
-    forceClick(localSsd2x375Option);
+    forceClickElementWhenClickable(localSsdField);
+    forceClickElementWhenClickable(localSsd2x375Option);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage pickDatacenterLocation() {
-    forceClick(datacenterLocationField);
-    forceClick(datacenterLocationFrankfurtOption);
+    forceClickElementWhenClickable(datacenterLocationField);
+    forceClickElementWhenClickable(datacenterLocationFrankfurtOption);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage pickCommittedUsage() {
-    forceClick(committedUsageField);
-    forceClick(committedUsageOneYearOption);
+    forceClickElementWhenClickable(committedUsageField);
+    forceClickElementWhenClickable(committedUsageOneYearOption);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage addToEstimate() {
-    forceClick(addToEstimateButton);
+    forceClickElementWhenClickable(addToEstimateButton);
     return this;
   }
 
   public boolean checkEstimateFields() {
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.textToBePresentInElement(estimateVmClass, "regular"));
+    new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElements(
+        estimateVmClass,
+        estimateInstanceType,
+        estimateRegion,
+        estimateLocalSsdSpace,
+        estimateCommitmentTerm,
+        estimateTotalCost));
     return estimateVmClass.getText().contains("regular")
         && estimateInstanceType.getText().contains("n1-standard-8")
         && estimateRegion.getText().contains("Frankfurt")
@@ -187,18 +186,19 @@ public class GoogleCloudPricingCalculatorPage {
         && estimateTotalCost.getText().contains("USD 1,082.77 per 1 month");
   }
 
-  public GoogleClougPricingCalculatorEstimatePriceByEmailPage clickEmailEstimate () {
-    forceClick(emailEstimateButton);
-    return new GoogleClougPricingCalculatorEstimatePriceByEmailPage(driver);
+  public GoogleCloudPricingCalculatorEmailEstimatePage clickEmailEstimate() {
+    forceClickElementWhenClickable(emailEstimateButton);
+    return new GoogleCloudPricingCalculatorEmailEstimatePage(driver);
+  }
+
+  private WebElement waitUntilElementIsClickable(WebElement element) {
+    return new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
   }
 
   // only for elements that continuously ignore clicks
-  private void forceClick(WebElement element) {
-    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
+  private void forceClickElementWhenClickable (WebElement element) {
+    waitUntilElementIsClickable(element);
     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
   }
 
-  private void click(WebElement element) {
-    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element)).click();
-  }
 }

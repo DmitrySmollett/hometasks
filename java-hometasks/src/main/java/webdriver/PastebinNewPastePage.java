@@ -28,7 +28,8 @@ public class PastebinNewPastePage {
   public boolean newPasteMatchesTheChosenOne() {
     new WebDriverWait(driver, 10)
         .until(ExpectedConditions.textToBePresentInElement(generalInputField, pasteText));
-    new WebDriverWait(driver, 10).until(ExpectedConditions.titleContains(titleText));
+    new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.titleContains(titleText));
     new WebDriverWait(driver, 10)
         .until(ExpectedConditions.textToBePresentInElement(codeStyle, "Bash"));
     return true;

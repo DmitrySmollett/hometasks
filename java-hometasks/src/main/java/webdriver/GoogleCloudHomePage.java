@@ -37,32 +37,28 @@ public class GoogleCloudHomePage {
   }
 
   public GoogleCloudHomePage searchForGoogleCloudPlatformPricingCalculator() {
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.elementToBeClickable(searchButton))
-        .click();
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.elementToBeClickable(searchInput))
-        .sendKeys(SEARCH_QUERRY);
-    searchInput.sendKeys(Keys.ENTER);
+    waitUntilElementIsClickable(searchButton).click();
+    waitUntilElementIsClickable(searchInput).sendKeys(SEARCH_QUERRY + Keys.ENTER);
     return this;
   }
 
   public GoogleCloudPricingCalculatorPage switchToTheGoogleCloudPlatformPricingCalculatorPage() {
-    new WebDriverWait(driver, 10)
-        .until(
-            ExpectedConditions.elementToBeClickable(
-                By.xpath(
-                    "//div[@class='gsc-thumbnail-inside']/descendant::b[text()='"
-                        + SEARCH_QUERRY
-                        + "']")))
+    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
+        By.xpath(
+            "//div[@class='gsc-thumbnail-inside']/descendant::b[text()='" + SEARCH_QUERRY + "']")))
         .click();
     switchToTheCalculatorFrame();
     return new GoogleCloudPricingCalculatorPage(driver);
   }
-  
-  private void switchToTheCalculatorFrame () {
-    new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(devsiteFrame));
-    new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(calculatorFrame));
+
+  private void switchToTheCalculatorFrame() {
+    new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(devsiteFrame));
+    new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(calculatorFrame));
   }
 
+  private WebElement waitUntilElementIsClickable(WebElement element) {
+    return new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
+  }
 }

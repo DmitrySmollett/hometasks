@@ -50,44 +50,40 @@ public class PastebinHomePage {
 
   public PastebinHomePage inputGeneralPaste(String paste) {
     this.pasteText = paste;
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.elementToBeClickable(generalInputField))
-        .sendKeys(paste);
+    waitUntilElementIsClickable(generalInputField).sendKeys(paste);
     return this;
   }
 
   public PastebinHomePage selectSyntaxStyleAsBash() {
-    clickElementWhenAvailable(syntaxStyleBox);
-    clickElementWhenAvailable(syntaxStyleBoxBashOption);
+    waitUntilElementIsClickable(syntaxStyleBox).click();
+    waitUntilElementIsClickable(syntaxStyleBoxBashOption).click();
     return this;
   }
 
   public PastebinHomePage selectExpirationTimeAs10Minutes() {
-    clickElementWhenAvailable(expirationTimeBox);
-    clickElementWhenAvailable(expirationTimeBoxTenMinutesOption);
+    waitUntilElementIsClickable(expirationTimeBox).click();
+    waitUntilElementIsClickable(expirationTimeBoxTenMinutesOption).click();
     return this;
   }
 
   public PastebinHomePage inputTitle(String title) {
     this.titleText = title;
-    new WebDriverWait(driver, 10)
-        .until(ExpectedConditions.elementToBeClickable(titleInputField))
-        .sendKeys(title);
+    waitUntilElementIsClickable(titleInputField).sendKeys(title);
     return this;
   }
 
   public PastebinNewPastePage sendPaste() {
-    clickElementWhenAvailable(submitPasteButton);
+    waitUntilElementIsClickable(submitPasteButton).click();
     return new PastebinNewPastePage(driver,pasteText, titleText);
   }
 
   public boolean titleOfCreatedPasteContainsEnteredTitle() {
-    clickElementWhenAvailable(submitPasteButton);
+    waitUntilElementIsClickable(submitPasteButton).click();
     new WebDriverWait(driver, 10).until(ExpectedConditions.titleContains(titleText));
     return true;
   }
 
-  private void clickElementWhenAvailable(WebElement element) {
-    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element)).click();
+  private WebElement waitUntilElementIsClickable(WebElement element) {
+    return new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
   }
 }
