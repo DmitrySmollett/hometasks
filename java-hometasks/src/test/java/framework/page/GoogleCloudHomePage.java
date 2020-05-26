@@ -13,7 +13,7 @@ public class GoogleCloudHomePage extends AbstractPage {
   private static final String CLOUD_GOOGLE_HOME_PAGE_URL = "http://cloud.google.com/";
   private static final String SEARCH_QUERY = "Google Cloud Platform Pricing Calculator";
 
-  @FindBy(className = "devsite-search-form")
+  @FindBy(className = "devsite-search-container")
   WebElement searchButton;
 
   @FindBy(name = "q")
