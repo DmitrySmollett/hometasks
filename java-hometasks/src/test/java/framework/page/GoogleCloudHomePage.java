@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleCloudHomePage extends AbstractPage {
-  private static final String CLOUD_GOOGLE_HOME_PAGE_URL = "http://cloud.google.com/";
+  private static final String CLOUD_GOOGLE_HOME_PAGE_URL = "http://cloud.google.com";
   private static final String SEARCH_QUERY = "Google Cloud Platform Pricing Calculator";
 
   @FindBy(className = "devsite-search-container")
@@ -27,15 +27,18 @@ public class GoogleCloudHomePage extends AbstractPage {
 
   public GoogleCloudHomePage(WebDriver driver) {
     super(driver);
+    logger.info(driver.toString());
     PageFactory.initElements(driver, this);
   }
 
   public GoogleCloudHomePage openPage() {
-    driver.get(CLOUD_GOOGLE_HOME_PAGE_URL);
+    logger.info(driver.toString());
+    driver.navigate().to(CLOUD_GOOGLE_HOME_PAGE_URL);
     return this;
   }
 
   public GoogleCloudHomePage searchForGoogleCloudPlatformPricingCalculator() {
+    logger.info(System.getProperty("browser"));
     waitUntilElementIsClickable(searchButton).click();
     waitUntilElementIsClickable(searchInput).sendKeys(SEARCH_QUERY + Keys.ENTER);
     return this;

@@ -13,6 +13,8 @@ public abstract class AbstractPage
 
   protected AbstractPage(WebDriver driver)
   {
+    logger.info(driver.toString());
     this.driver = driver;
+    logger.info(driver.toString());
   }
 }
