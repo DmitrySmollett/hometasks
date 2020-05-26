@@ -1,0 +1,9 @@
+*.db
+*.log
+bin/
+java-hometasks/target/
+java-hometasks/.idea/
+target/
+.idea/
+*.iml
+*.bat
