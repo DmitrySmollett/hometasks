@@ -79,7 +79,4 @@ public class Directory {
   public static double countAverageFilesPerFolder (File file) {
     return (double) countFiles(file) / countFolders(file);
   }
-
-
-  //    public static  int countFolders (File file) {
 }
