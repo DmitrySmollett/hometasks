@@ -27,20 +27,22 @@ public class GoogleCloudHomePage extends AbstractPage {
 
   public GoogleCloudHomePage(WebDriver driver) {
     super(driver);
-    logger.info(driver.toString());
     PageFactory.initElements(driver, this);
+    logger.info("GoogleCloudHomePage constructor finished");
   }
 
   public GoogleCloudHomePage openPage() {
-    logger.info(driver.toString());
+    logger.info("openPage started");
     driver.navigate().to(CLOUD_GOOGLE_HOME_PAGE_URL);
+    logger.info("openPage finished");
     return this;
   }
 
   public GoogleCloudHomePage searchForGoogleCloudPlatformPricingCalculator() {
-    logger.info(System.getProperty("browser"));
+    logger.info("searchForGoogleCloudPlatformPricingCalculator started");
     waitUntilElementIsClickable(searchButton).click();
     waitUntilElementIsClickable(searchInput).sendKeys(SEARCH_QUERY + Keys.ENTER);
+    logger.info("searchForGoogleCloudPlatformPricingCalculator finished");
     return this;
   }
 
