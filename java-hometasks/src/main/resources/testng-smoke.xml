@@ -3,7 +3,7 @@
 <suite name="Smoke" verbose="1" >
   <test name="PasteBinLightTesting"   >
     <classes>
-      <class name="framework.test.PasteBinTests" />
+      <class name="framework.test.GooglePricingCalculatorTests" />
     </classes>
   </test>
 </suite>
